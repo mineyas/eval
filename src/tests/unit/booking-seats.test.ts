@@ -1,3 +1,4 @@
+import { Booking } from "../../domain/entities/booking.entity";
 import { Conference } from "../../domain/entities/conference.entity";
 import { IIDGenerator } from "../../interfaces/id-generator.interface";
 import { BookingSeat } from "../../usecases/booking-seats";
@@ -61,6 +62,40 @@ describe("Usecase : Book seats", () => {
         seats: 1,
         bookedSeats: 1,
       });
+
+      await conferenceRepository.create(noPlacaAvailable);
+
+      await bookingRepository.create(
+        new Booking({
+          id: "id-1",
+          userId: testUsers.alice.props.id,
+          conferenceId: testConferences.conference.props.id,
+        })
+      );
+    });
+
+    const payload = {
+      user: testUsers.johnDoe,
+      conferenceId: testConferences.conference.props.id,
+    };
+
+    it("should throw an error", async () => {
+      await expect(usecase.execute(payload)).rejects.toThrow(
+        "Conference is full, no places available"
+      );
+    });
+  });
+
+  describe("Scenario: conference does not exist", () => {
+    const payload = {
+      user: testUsers.johnDoe,
+      conferenceId: testConferences.conference.props.id,
+    };
+
+    it("should throw an error", async () => {
+      await expect(usecase.execute(payload)).rejects.toThrow(
+        "Conference not found"
+      );
     });
   });
 });
