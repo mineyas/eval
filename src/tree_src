@@ -1,0 +1,98 @@
+src
+├── .DS_Store
+├── app
+│   ├── app.ts
+│   ├── controllers
+│   │   └── conference.controllers.ts
+│   ├── dto
+│   │   └── conference.dto.ts
+│   ├── middlewares
+│   │   ├── authenticator.middleware.ts
+│   │   ├── error-handler.middleware.ts
+│   │   └── json-response.middleware.ts
+│   ├── routes
+│   │   └── conference.routes.ts
+│   ├── server.ts
+│   └── utils
+│       └── validate-request.ts
+├── domain
+│   ├── entities
+│   │   ├── booking.entity.ts
+│   │   ├── conference.entity.ts
+│   │   └── user.entity.ts
+│   └── value_objects
+│       └── email.ts
+├── infrastructure
+│   ├── authenticators
+│   │   ├── basic-authenticator.ts
+│   │   └── utils
+│   │       └── extract-token.ts
+│   ├── config
+│   │   └── dependency-injection.ts
+│   ├── database
+│   │   └── mongo
+│   │       ├── mongo-conference-repository.ts
+│   │       ├── mongo-conference.ts
+│   │       ├── mongo-user-repository.ts
+│   │       └── mongo-user.ts
+│   └── publisher
+│       └── rabbitmq-publisher.ts
+├── interfaces
+│   ├── authenticator.interface.ts
+│   ├── booking-repository.interface.ts
+│   ├── conference-repository.interface.ts
+│   ├── date-generator.interface.ts
+│   ├── executable.interface.ts
+│   ├── id-generator.interface.ts
+│   ├── mailer.interface.ts
+│   └── user-repository.interface.ts
+├── shared
+│   └── utils
+│       ├── current-date-generator.ts
+│       └── random-id-generator.ts
+├── tests
+│   ├── .DS_Store
+│   ├── e2e
+│   │   ├── change-dates.e2e.test.ts
+│   │   ├── change-seats.e2e.test.ts
+│   │   ├── fixtures
+│   │   │   ├── booking-fixture.ts
+│   │   │   ├── conference-fixture.ts
+│   │   │   └── user-fixture.ts
+│   │   ├── organize-conference.e2e.test.ts
+│   │   ├── seeds
+│   │   │   ├── booking-e2e-seed.ts
+│   │   │   ├── conference-e2e-seed.ts
+│   │   │   └── user-e2e-seed.ts
+│   │   └── utils
+│   │       ├── fixture.interface.ts
+│   │       └── test-app.ts
+│   ├── fixed
+│   │   ├── fixed-date-generator.ts
+│   │   └── fixed-id-generator.ts
+│   ├── in-memory
+│   │   ├── in-memory-booking-repository.ts
+│   │   ├── in-memory-conference-repository.ts
+│   │   ├── in-memory-mailer.ts
+│   │   └── in-memory-user-repository.ts
+│   ├── int
+│   │   ├── mongo-conference-repository.int.test.ts
+│   │   └── mongo-user-repository.int.test.ts
+│   ├── setup
+│   │   ├── docker-compose.yml
+│   │   ├── docker-manager.ts
+│   │   ├── global-setup.ts
+│   │   └── global-teardown.ts
+│   └── unit
+│       ├── basic-authenticator.test.ts
+│       ├── change-dates.test.ts
+│       ├── change-seats.test.ts
+│       ├── organize-conference.test.ts
+│       └── seeds
+│           ├── seeds-booking.ts
+│           ├── seeds-conference.ts
+│           └── seeds-user.ts
+└── usecases
+    ├── change-dates.ts
+    ├── change-seats.ts
+    └── organize-conference.ts
